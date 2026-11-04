@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Server Time App</title>
+</head>
+<body>
+  <h1>Current Server Time:</h1>
+  <div id="clock" style="font-size: 2rem;">Connecting...</div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const clockDiv = document.getElementById('clock');
+
+    socket.on('timeUpdate', (timeString) => {
+      clockDiv.textContent = timeString;
+    });
+  </script>
+</body>
+</html>
