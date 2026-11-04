@@ -1,12 +1,24 @@
 const express = require('express');
-const path = require('path');
-const app = express();
+const http = require('http');
+const { Server } = require('socket.io');
 
-// Route specifically for the home page
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
+
+app.use(express.static('public'));
+
+// Emit the time every 60 seconds (60000 ms)
+setInterval(() => {
+  const currentTime = new Date().toLocaleTimeString();
+  io.emit('timeUpdate', currentTime);
+}, 60000);
+
+io.on('connection', (socket) => {
+  // Send current time immediately upon connection
+  socket.emit('timeUpdate', new Date().toLocaleTimeString());
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+server.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
 });
