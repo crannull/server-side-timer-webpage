@@ -1,0 +1,24 @@
+{
+  "name": "server-side-timer-webpage",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/crannull/server-side-timer-webpage#readme",
+  "bugs": {
+    "url": "https://github.com/crannull/server-side-timer-webpage/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crannull/server-side-timer-webpage.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
