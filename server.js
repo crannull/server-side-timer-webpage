@@ -8,11 +8,11 @@ const io = new Server(server);
 
 app.use(express.static('public'));
 
-// Emit the time every 60 seconds (60000 ms)
+// Emit the time every 60 seconds (2000 ms)
 setInterval(() => {
   const currentTime = new Date().toLocaleTimeString();
   io.emit('timeUpdate', currentTime);
-}, 60000);
+}, 2000);
 
 io.on('connection', (socket) => {
   // Send current time immediately upon connection
