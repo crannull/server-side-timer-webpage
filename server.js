@@ -8,13 +8,12 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 //app.use(express.static('public'));
-app.use(express.static(__dirname));
+//app.use(express.static(__dirname));
 
 // Route specifically for the home page
-//app.get('/', (req, res) => {
-//    res.sendFile(path.join(__dirname, 'index.html'));
-//});
-
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Emit the time every 60 seconds (2000 ms)
 setInterval(() => {
